@@ -37,7 +37,7 @@ exp:  exp ('*'|'/') exp
    |  exp ('<'|'>'|'==') exp
    |  exp '[' exp ']'
    |  exp '.' 'length'
-   |  exp '.' ID explist
+   |  exp '.' ID '(' explist ')'
    |  INT
    |  BOOLEAN
    |  ID

@@ -8,7 +8,7 @@ all:
 	javac $(SOURCE)*.java
 
 run: all
-	java org.antlr.v4.gui.TestRig $(SOURCE) $(PROG) -gui factorial.java
+	java org.antlr.v4.gui.TestRig $(SOURCE) $(PROG) -gui debug.java
 
 clean:
 	rm -f *.class
