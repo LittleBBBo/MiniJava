@@ -1,0 +1,50 @@
+prog
+|-mainclass
+| |-id Factorial
+| |-id a
+| |-statement
+| | |-exp
+| | | |-exp
+| | | | |-id Fac
+| | | |-id ComputeFac
+| | | |-explist
+| | | | |-exp
+| | | | | |-int 10
+|-classdecl
+| |-id Fac
+| |-methoddecl
+| | |-type
+| | |-id ComputeFac
+| | |-formallist
+| | | |-type
+| | | |-id num
+| | |-vardecl
+| | | |-type
+| | | |-id num_aux
+| | |-statement
+| | | |-exp
+| | | | |-exp
+| | | | | |-id num
+| | | | |-exp
+| | | | | |-int 1
+| | | |-statement
+| | | | |-id num_aux
+| | | | |-exp
+| | | | | |-int 1
+| | | |-statement
+| | | | |-id num_aux
+| | | | |-exp
+| | | | | |-exp
+| | | | | | |-id num
+| | | | | |-exp
+| | | | | | |-exp
+| | | | | | | |-exp
+| | | | | | | |-id ComputeFac
+| | | | | | | |-explist
+| | | | | | | | |-exp
+| | | | | | | | | |-exp
+| | | | | | | | | | |-id num
+| | | | | | | | | |-exp
+| | | | | | | | | | |-int 1
+| | |-exp
+| | | |-id num_aux

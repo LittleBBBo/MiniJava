@@ -8,18 +8,18 @@ import java.io.*;
  * Created by BodeNg on 2016/12/30.
  */
 public class Main {
-    public static String location = "samples/factorial.java";
+    public static String location = "samples/error.java";
     public static String locationOut = "AST.txt";
 
     public static void main(String[] args) {
         ANTLRInputStream antlrInputStream;
 
-//        if( args.length < 2) {
-//            System.out.println("Usage : Parser.jar input.mjava output.txt");
-//            return;
-//        }
-//        location = args[0];
-//        locationOut = args[1];
+        if( args.length != 2) {
+            System.out.println("Usage : MiniJavaAST.jar input.java output.txt");
+            return;
+        }
+        location = args[0];
+        locationOut = args[1];
 
         try {
             InputStream in = new FileInputStream(location);
@@ -34,25 +34,19 @@ public class Main {
         miniJavaLexer lexer = new miniJavaLexer(antlrInputStream);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         miniJavaParser parser = new miniJavaParser(tokens);
-//        parser.removeErrorListeners();
-//        parser.addErrorListener(new IListener());
+        parser.removeErrorListeners();
+        parser.addErrorListener(new MyListener());
+        String outstr = new AstPrinter().print(parser.prog().getRuleContext());
 
-
-//
-//        ParseTree tree = parser.prog();
-//        String outstr = tree.toStringTree(parser);
-//        System.out.println(outstr);
-        new AstPrinter().print(parser.prog().getRuleContext());
-//
-//        try {
-//            File file = new File(locationOut);
-//            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-//            BufferedWriter bw = new BufferedWriter(fw);
-//            bw.write(outstr);
-//            bw.close();
-//            fw.close();
-//        }catch (IOException e)
-//        {
-//        }
+        try {
+            File file = new File(locationOut);
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(outstr);
+            bw.close();
+            fw.close();
+        }catch (IOException e)
+        {
+        }
     }
 }
